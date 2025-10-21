@@ -9,7 +9,7 @@ This tool serves as an interactive calculus companion, enabling users to input c
 ## Demo Video
 Watch our demo video to see Graph-Lagrange in action and learn how to use its various features:
 
-[Demo Video](https://github.com/harsh-panchal-804/Graph-Lagrange/assets/video/demo.mp4)
+![Demo GIF](/Demo_video/demo_gif.gif)
 
 ## Features
 
