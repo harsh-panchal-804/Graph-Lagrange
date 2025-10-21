@@ -1,149 +1,96 @@
-# Graph-Lagrange
+# Graph-Lagrange: Comprehensive Calculus Extrema Analyzer
 
-<div align="center">
+A powerful, command-line utility implemented in Python using the SymPy library for performing in-depth calculus analysis, focusing on finding and classifying local extrema for single and multivariable functions.
 
-[![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![SymPy](https://img.shields.io/badge/powered%20by-SymPy-orange.svg)](https://www.sympy.org/)
+## Overview
 
-A sophisticated calculus analysis tool for exploring extrema in both single and multivariable functions.
+This tool serves as an interactive calculus companion, enabling users to input complex functions and parameters, receive detailed analysis (critical points, Hessian matrix, inflection points, limits), and visualize the results with dynamic plotting.
 
-[Features](#features) • [Installation](#installation) • [Usage](#usage) • [Examples](#examples) • [Contributing](#contributing)
+## Demo Video
+Watch our demo video to see Graph-Lagrange in action and learn how to use its various features:
 
-</div>
+[Demo Video](https://github.com/harsh-panchal-804/Graph-Lagrange/assets/video/demo.mp4)
 
-## 🎯 Overview
+## Features
 
-Graph-Lagrange is a powerful command-line utility that combines symbolic mathematics with visualization to help you analyze and understand function behavior. Whether you're studying calculus, solving optimization problems, or exploring mathematical relationships, this tool provides a comprehensive suite of analytical capabilities.
+### Generalized Function Input
+- Accepts functions defined with standard mathematical notation (e.g., `sin(x) + y**2`, `a*x**3 + c`)
 
-![Demo Animation](/Demo_video/demo_gif.gif)
+### Multivariable (2D) Analysis
+- **Unconstrained Extrema**: Automatically solves for critical points (\nabla f = 0$$)
+- **Hessian Matrix Test**: Calculates and displays the Hessian matrix symbolically for classification (Local Maxima, Minima, Saddle Points)
+- **Lagrange Multipliers**: Supports finding constrained extrema subject to an equation $$g(x, y) = 0$$
 
-## ✨ Features
+### Single Variable (1D) Analysis
+- **Interactive Parameters**: Features a loop simulating interactive sliders, allowing users to dynamically update function parameters and instantly see the corresponding analysis and plot changes
+- **Inflection Points & Concavity**: Reports points of inflection by solving $$f''(x) = 0$$
+- **Asymptotic Behavior**: Calculates limits as $$x \to \pm \infty$$
 
-### 📊 Single Variable Analysis
-- Find critical points where $f'(x) = 0$
-- Identify inflection points where $f''(x) = 0$
-- Calculate limits as $x \to \pm \infty$
-- Interactive parameter adjustment
-- Real-time plot updates
+### Dynamic Visualization
+- Generates high-resolution 2D and 3D plots with dynamically calculated ranges to ensure all relevant features (extrema, inflection points) are visible
+- Professional Output: Outputs results in clean, formatted console tables and uses LaTeX strings for superior display of symbolic functions
 
-### 🔮 Multivariable Analysis
-- Locate critical points by solving $\nabla f = 0$
-- Classify extrema using the Hessian matrix
-- Find constrained extrema with Lagrange multipliers
-- Generate 3D surface plots
-
-### 🎨 Visualization Features
-- Adaptive plotting ranges
-- High-resolution 3D rendering
-- Automatic feature detection
-- Dynamic axis scaling
-
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
+- Python 3.x
+- sympy library (installing this typically handles plotting dependencies like Matplotlib)
+
+### Clone the Repository
 ```bash
-# Python 3.x is required
-python --version  # Should be 3.x
+git clone https://github.com/harsh-panchal-804/Graph-Lagrange.git
+cd Graph-Lagrange
 ```
 
-### Quick Start
+
+### Install Dependencies
 ```bash
-# Clone the repository
-git clone https://github.com/harsh-panchal-804/Graph-Lagrange.git
-
-# Navigate to project directory
-cd Graph-Lagrange
-
-# Install dependencies
 pip install sympy
 ```
 
-## 📖 Usage
+## Build and Run
 
-### Launch the Analyzer
+Start the analyzer by executing the main script:
 ```bash
 python MaximaMinimaFinal.py
 ```
 
-### Mode Selection
-The tool offers two analysis modes:
-1. Single Variable (1D)
-2. Multivariable (2D)
+## Usage Example
 
-## 📚 Examples
+The script will first ask if you are analyzing a 2D or 1D function:
 
-### Single Variable Analysis
-```python
-# Input
-f(x) = ax² + bx + c
-Parameters: a = 1, b = -2, c = 1
-
-# Output
-Critical Points: x = 1
-Classification: Minimum
-f(1) = 0
+### 1. 2D (Multivariable) Mode:
+```
+Is your function 2D (1/0): 1
+Enter the 2D function f(x, y) (e.g., x**4 + y**4 - 4*x*y + 1): x**2 + y**2
+...
+(Analysis output)
+...
+Do you want to compute constrained extrema...? (y/n): n
+Do you want to plot the function?(1/0): 1
 ```
 
-### Multivariable Analysis
-```python
-# Input
-f(x,y) = x² + y² - 2xy
+### 2. 1D (Interactive) Mode:
+```
+Is your function 2D (1/0): 0
+Enter the 1D function f(x) with parameters (e.g., a*x**3 + b*x + c): a*x**2 + b*x
+Enter parameter symbols separated by commas (e.g., a, b, c): a, b
 
-# Output
-Critical Point: (0, 0)
-Classification: Saddle Point
-Hessian Determinant: -4
+# INTERACTIVE PARAMETER UPDATE
+  Enter value for parameter 'a': 1
+  Enter value for parameter 'b': -2
+...
+(Analysis and plot updates)
+...
+Change parameters and re-analyze? (y/n): y
 ```
 
-### Constrained Optimization
-```python
-# Function
-f(x,y) = x² + y²
+## Project Structure
+- `MaximaMinimaFinal.py` – The complete, self-contained Python script containing all analysis and plotting logic
+- `README.md` – This documentation file
 
-# Constraint
-g(x,y) = x + y - 1 = 0
+## License
+This project is open-source. MIT License.
 
-# Solution
-x = 0.5, y = 0.5
-λ = 1
-```
-
-## 🔧 Advanced Features
-
-### Hessian Analysis
-The tool automatically computes and evaluates the Hessian matrix:
-
-$H = \begin{bmatrix} 
-\frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\
-\frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial y^2}
-\end{bmatrix}$
-
-### Lagrange Multipliers
-For constrained optimization problems, we solve:
-
-$\nabla f = \lambda \nabla g$
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [SymPy](https://www.sympy.org/) for symbolic mathematics
-- Contributors and users of this project
-
----
-<div align="center">
-Made with ❤️ by <a href="https://github.com/harsh-panchal-804">Harsh Panchal</a>
-</div>
+## Contributing
+Pull requests and suggestions are welcome! Please open an issue to discuss enhancements, especially around solving complex systems of equations or improving plotting integration.
